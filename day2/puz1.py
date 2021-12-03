@@ -7,11 +7,11 @@ def solve():
     for l in lines:
         inputs = l.split(" ")
         if inputs[0] == "forward":
-            forward += inputs[1]
+            forward += int(inputs[1])
         elif inputs[0] == "down":
-            down += inputs[1]
+            down += int(inputs[1])
         else:
-            up += inputs[1]
+            up += int(inputs[1])
     return forward * (down - up)
 
 if __name__ == '__main__':
