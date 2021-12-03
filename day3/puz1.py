@@ -11,6 +11,7 @@ def solve():
         for n in range(len(lines)-1):
             cols += [int(lines[n].strip()[i])]
         rows += [cols]
+
     for a in rows:
         sum_one = a.count(1)
         if sum_one > len(a)/2:
