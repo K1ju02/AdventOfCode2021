@@ -1,29 +1,8 @@
-def check_win(board):
-    col_count = [0,0,0,0,0]
-    for line in board:
-        x = line.count(-1)
-        if x == 5:
-            return True
-        for i in range(len(line)):
-            if line[i] == -1:
-                col_count[i] += 1
-    for count in col_count:
-        if count == 5:
-            return True
-    return False
-
-def calc_board(board):
-    sum = 0
-    for line in board:
-        for i in line:
-            if i == -1:
-                continue
-            else:
-                sum += i
-    return sum
+import day4.puz1 as help
+import numpy as np
 
 def solve():
-    file = open("input4t.txt")
+    file = open("input4.txt")
     lines = file.read()
     lines = lines.split('\n')
     draws = lines.pop(0).split(',')
@@ -43,15 +22,19 @@ def solve():
         results += [board]
 
     scores = []
+    won_boards = []
     for draw in draws:
         for board in results:
+            if won_boards.__contains__(board):
+                continue
             for n in range(5):
                 for i in range(5):
                     if int(draw) == board[n][i]:
                         board[n][i] = -1
-            if check_win(board):
-                scores += [calc_board(board) * int(draw)]
-    return scores
+            if help.check_win(board):
+                scores += [help.calc_board(board) * int(draw)]
+                won_boards += [board]
+    return scores[-1]
 
 if __name__ == '__main__':
     print(solve())
