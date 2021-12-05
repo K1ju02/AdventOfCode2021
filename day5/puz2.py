@@ -1,6 +1,7 @@
 import numpy as np
 import day5.puz1 as help
-
+from matplotlib import pyplot
+from matplotlib import colors
 
 def solve():
     file = open("input5.txt")
@@ -34,8 +35,12 @@ def solve():
                 for i in range(abs(y2-y1)+1):
                     vents[y1-i][x1-i] += 1
 
+    pyplot.figure(figsize=(50, 50))
+    pyplot.imshow(vents)
+    pyplot.show()
     return np.count_nonzero(vents >= 2)
 
 
 if __name__ == '__main__':
     print(solve())
+
