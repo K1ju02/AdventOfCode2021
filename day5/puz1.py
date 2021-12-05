@@ -1,15 +1,19 @@
 import numpy as np
 
+def split_line_to_cords(line):
+    point1, point2 = line.split(" -> ")
+    x1, y1 = point1.split(",")
+    x2, y2 = point2.split(",")
+    x1, y1, x2, y2 = int(x1.strip()), int(y1.strip()), int(x2.strip()), int(y2.strip())
+    return x1, y1, x2, y2
+
 def solve():
     file = open("input5.txt")
     lines = file.readlines()
     vents = np.zeros((1000,1000),dtype=np.int32)
 
     for line in lines:
-        point1, point2 = line.split(" -> ")
-        x1, y1 = point1.split(",")
-        x2, y2 = point2.split(",")
-        x1, y1, x2, y2 = int(x1.strip()), int(y1.strip()), int(x2.strip()), int(y2.strip())
+        x1, y1, x2, y2 = split_line_to_cords(line)
         if x1 == x2:
             if y1 > y2:
                 y1, y2 = y2, y1
