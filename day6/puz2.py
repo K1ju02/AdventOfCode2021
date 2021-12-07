@@ -10,7 +10,6 @@ def solve():
     for i in range(256):
         fishes = np.roll(fishes, -1)
         fishes[6] += fishes[8]
-        print(fishes)
 
     return np.sum(fishes)
 
