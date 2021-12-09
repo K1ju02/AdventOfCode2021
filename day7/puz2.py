@@ -1,4 +1,5 @@
 import numpy as np
+import cProfile
 
 def triangle_num(n):
     res = 0
@@ -14,7 +15,8 @@ def solve_day7_2():
     fuel = 0
     for pos in positions:
         fuel += triangle_num(abs((pos-m)))
-    return fuel
+    return str(fuel)
 
 if __name__ == '__main__':
+    #cProfile.run(solve_day7_2())
     print(solve_day7_2())
