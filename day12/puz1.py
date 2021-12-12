@@ -1,19 +1,14 @@
-import numpy as np
-from typing import List
 from collections import deque
 
 #yikes me bad https://www.geeksforgeeks.org/print-paths-given-source-destination-using-bfs/
-def is_not_visited(x: int, path: List[int]) -> int:
-    size = len(path)
-    for i in range(size):
+def is_not_visited(x, path):
+    for i in range(len(path)):
         if path[i] == x:
-            return 0
-
-    return 1
+            return False
+    return True
 
 #yikers https://www.geeksforgeeks.org/print-paths-given-source-destination-using-bfs/
-def find_paths(g: List[List[int]], src: int,
-              dst: int, v: int) -> None:
+def find_paths(g, src, dst):
     q = deque()
     path = [src]
     q.append(path.copy())
@@ -22,7 +17,7 @@ def find_paths(g: List[List[int]], src: int,
 
     while q:
         path = q.popleft()
-        last = path[len(path) - 1]
+        last = path[-1]
 
         if last == dst:
              output += [path]
@@ -50,7 +45,7 @@ def solve_12_1():
         else:
             graph[line[1]] += [line[0]]
     print(graph)
-    return len(find_paths(graph, 'start', 'end', len(graph.keys())))
+    return len(find_paths(graph, 'start', 'end'))
 
 if __name__ == '__main__':
     print(solve_12_1())
