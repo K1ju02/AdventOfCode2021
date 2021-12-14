@@ -17,7 +17,7 @@ def poly_insert(string, rules, i):
     return poly_insert(string, rules, i)
 
 def solve_14_1():
-    file = open("input14.txt")
+    file = open("input14t.txt")
     first_line = file.readline().strip()
     file.readline()
     lines = file.readlines()
